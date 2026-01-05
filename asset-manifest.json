@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/darts-checkout-app/static/css/main.151577c8.css",
-    "main.js": "/darts-checkout-app/static/js/main.16cd3497.js",
+    "main.js": "/darts-checkout-app/static/js/main.4915c017.js",
     "static/js/453.fa5deb55.chunk.js": "/darts-checkout-app/static/js/453.fa5deb55.chunk.js",
     "index.html": "/darts-checkout-app/index.html",
     "main.151577c8.css.map": "/darts-checkout-app/static/css/main.151577c8.css.map",
-    "main.16cd3497.js.map": "/darts-checkout-app/static/js/main.16cd3497.js.map",
+    "main.4915c017.js.map": "/darts-checkout-app/static/js/main.4915c017.js.map",
     "453.fa5deb55.chunk.js.map": "/darts-checkout-app/static/js/453.fa5deb55.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.151577c8.css",
-    "static/js/main.16cd3497.js"
+    "static/js/main.4915c017.js"
   ]
 }
