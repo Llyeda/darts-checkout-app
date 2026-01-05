@@ -741,26 +741,13 @@ const ScoreDisplay = () => {
 };
 
 const DartSequence = () => {
-  const { userSequence, showHint, currentScore, removeDart, feedback } = useGame();
+  const { userSequence, showHint, currentScore, feedback } = useGame();
   const route = checkoutLogic.optimalRoutes[currentScore];
   const optimal = route?.primary;
-
-  const handleDartClick = (index) => {
-    // Only allow removing if this dart exists and no feedback yet
-    if (userSequence[index] && !feedback) {
-      // Remove this dart and all subsequent darts
-      const dartsBefore = userSequence.slice(0, index);
-      // Update the sequence by removing from this position onwards
-      while (userSequence.length > index) {
-        removeDart();
-      }
-    }
-  };
 
   const renderDart = (index) => {
     const dart = userSequence[index];
     const hintDart = showHint && optimal ? optimal[index] : null;
-    const isClickable = dart && !feedback;
 
     return (
       <div className="flex-1 flex flex-col items-center gap-2">
@@ -770,9 +757,7 @@ const DartSequence = () => {
             dart 
               ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg' 
               : 'bg-slate-800 text-slate-600 border-2 border-dashed border-slate-700'
-          } ${isClickable ? 'cursor-pointer hover:brightness-110 active:scale-95' : ''}`}
-          onClick={() => handleDartClick(index)}
-          title={isClickable ? 'Click to remove this dart' : ''}
+          }`}
         >
           {dart || '?'}
         </div>
@@ -795,14 +780,6 @@ const DartSequence = () => {
         {renderDart(1)}
         {renderDart(2)}
       </div>
-      {/* Fixed height container for helper text to prevent layout shift */}
-      <div className="h-6 flex items-center justify-center mt-3">
-        {userSequence.length > 0 && !feedback && (
-          <div className="text-center text-xs text-slate-400">
-            Tap a dart to remove it
-          </div>
-        )}
-      </div>
     </div>
   );
 };
@@ -810,16 +787,16 @@ const DartSequence = () => {
 const FeedbackDisplay = () => {
   const { feedback } = useGame();
 
-  // Always render container with fixed minimum height to prevent layout shift
+  // Don't render anything if no feedback
   if (!feedback) {
-    return <div className="min-h-[200px]"></div>;
+    return null;
   }
 
   const Icon = feedback.icon;
 
   return (
-    <div className="min-h-[200px]">
-      <div className={`rounded-xl p-6 shadow-lg border-2 ${feedback.bgColor} ${feedback.borderColor}`}>
+    <div className={`rounded-xl p-6 shadow-lg border-2 ${feedback.bgColor} ${feedback.borderColor}`}>
+      <div className="flex items-start gap-4">
         <div className="flex items-start gap-4">
           <Icon className={`w-10 h-10 ${feedback.color} flex-shrink-0`} />
           <div className="flex-1">
