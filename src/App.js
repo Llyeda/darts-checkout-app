@@ -411,18 +411,18 @@ const Keypad = () => {
   ];
 
   return (
-    <div className="bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-700">
-      <div className="space-y-4">
+    <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 shadow-xl border border-slate-700">
+      <div className="space-y-3 sm:space-y-4">
         {/* Modifier Selection */}
         <div>
           <div className="text-xs text-slate-400 font-medium mb-2 text-center">Modifier</div>
-          <div className="flex gap-2">
+          <div className="flex gap-1.5 sm:gap-2">
             {modifierButtons.map(btn => (
               <button
                 key={btn.value}
                 onClick={() => setModifier(btn.value)}
                 disabled={disabled}
-                className={`flex-1 py-3 rounded-lg font-bold transition-all ${
+                className={`flex-1 py-2 sm:py-3 rounded-lg font-bold transition-all text-xs sm:text-base ${
                   modifier === btn.value
                     ? `${btn.color} text-white shadow-lg scale-105`
                     : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
@@ -437,15 +437,15 @@ const Keypad = () => {
         {/* Number Grid */}
         <div>
           <div className="text-xs text-slate-400 font-medium mb-2 text-center">Number</div>
-          <div className="space-y-2">
+          <div className="space-y-1.5 sm:space-y-2">
             {numbers.map((row, i) => (
-              <div key={i} className="flex gap-2">
+              <div key={i} className="flex gap-1.5 sm:gap-2">
                 {row.map(num => (
                   <button
                     key={num}
                     onClick={() => handleNumberClick(num)}
                     disabled={disabled}
-                    className={`flex-1 h-12 rounded-lg font-bold text-white transition-all ${
+                    className={`flex-1 h-10 sm:h-12 rounded-lg font-bold text-white transition-all text-sm sm:text-base ${
                       disabled
                         ? 'bg-slate-800 opacity-50 cursor-not-allowed'
                         : 'bg-slate-700 hover:bg-slate-600 active:scale-95'
@@ -462,11 +462,11 @@ const Keypad = () => {
         {/* Bullseye Buttons */}
         <div>
           <div className="text-xs text-slate-400 font-medium mb-2 text-center">Bullseye</div>
-          <div className="flex gap-2">
+          <div className="flex gap-1.5 sm:gap-2">
             <button
               onClick={() => handleBullClick(false)}
               disabled={disabled}
-              className={`flex-1 py-3 rounded-lg font-bold transition-all ${
+              className={`flex-1 py-2 sm:py-3 rounded-lg font-bold transition-all text-xs sm:text-base ${
                 disabled
                   ? 'bg-slate-800 text-slate-400 opacity-50 cursor-not-allowed'
                   : 'bg-green-700 hover:bg-green-600 text-white active:scale-95'
@@ -477,7 +477,7 @@ const Keypad = () => {
             <button
               onClick={() => handleBullClick(true)}
               disabled={disabled}
-              className={`flex-1 py-3 rounded-lg font-bold transition-all ${
+              className={`flex-1 py-2 sm:py-3 rounded-lg font-bold transition-all text-xs sm:text-base ${
                 disabled
                   ? 'bg-slate-800 text-slate-400 opacity-50 cursor-not-allowed'
                   : 'bg-red-700 hover:bg-red-600 text-white active:scale-95'
@@ -566,7 +566,7 @@ const Dartboard = () => {
   };
 
   return (
-    <div className="bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-700">
+    <div className="bg-slate-900 rounded-2xl p-3 sm:p-6 shadow-xl border border-slate-700">
       <svg viewBox="0 0 500 500" className="w-full max-w-lg mx-auto">
         <circle cx={centerX} cy={centerY} r={240} fill="#000000" />
         <circle cx={centerX} cy={centerY} r={190} fill="#1a1a1a" />
@@ -650,7 +650,7 @@ const Dartboard = () => {
               dominantBaseline="middle"
               className="fill-white font-bold pointer-events-none select-none"
               style={{ 
-                fontSize: '28px',
+                fontSize: '24px',
                 textShadow: '2px 2px 4px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.9)'
               }}
             >
@@ -660,7 +660,7 @@ const Dartboard = () => {
         })}
       </svg>
 
-      <div className="text-center text-xs text-slate-400 mt-4">
+      <div className="text-center text-xs text-slate-400 mt-2 sm:mt-4">
         Tap segments to select your darts
       </div>
     </div>
@@ -672,20 +672,20 @@ const ScoreDisplay = () => {
   const route = checkoutLogic.optimalRoutes[currentScore];
   
   return (
-    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-6 shadow-2xl border border-slate-700">
-      <div className="text-center mb-4">
-        <div className="text-sm text-slate-400 font-medium mb-1">Remaining Score</div>
-        <div className="text-7xl font-bold text-white tracking-tight">
+    <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-4 sm:p-6 shadow-2xl border border-slate-700">
+      <div className="text-center mb-3 sm:mb-4">
+        <div className="text-xs sm:text-sm text-slate-400 font-medium mb-1">Remaining Score</div>
+        <div className="text-5xl sm:text-7xl font-bold text-white tracking-tight">
           {currentScore}
         </div>
       </div>
       
       {/* Input Mode Toggle */}
-      <div className="mb-4 flex items-center justify-center gap-3 py-2 px-4 bg-slate-800/50 rounded-lg border border-slate-700">
+      <div className="mb-3 sm:mb-4 flex items-center justify-center gap-2 sm:gap-3 py-1.5 sm:py-2 px-3 sm:px-4 bg-slate-800/50 rounded-lg border border-slate-700">
         <span className="text-xs text-slate-400 font-medium">Input:</span>
         <button
           onClick={toggleInputMode}
-          className={`px-3 py-1 rounded text-xs font-bold transition-all ${
+          className={`px-2 sm:px-3 py-1 rounded text-xs font-bold transition-all ${
             inputMode === 'board'
               ? 'bg-blue-600 text-white'
               : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
@@ -695,7 +695,7 @@ const ScoreDisplay = () => {
         </button>
         <button
           onClick={toggleInputMode}
-          className={`px-3 py-1 rounded text-xs font-bold transition-all ${
+          className={`px-2 sm:px-3 py-1 rounded text-xs font-bold transition-all ${
             inputMode === 'keypad'
               ? 'bg-blue-600 text-white'
               : 'bg-slate-700 text-slate-400 hover:bg-slate-600'
@@ -708,31 +708,31 @@ const ScoreDisplay = () => {
       {route?.missStrategy && (
         <button
           onClick={toggleBackups}
-          className="w-full mb-4 py-2 px-4 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/50 rounded-lg transition-all flex items-center justify-center gap-2 text-purple-300 text-sm"
+          className="w-full mb-3 sm:mb-4 py-1.5 sm:py-2 px-3 sm:px-4 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/50 rounded-lg transition-all flex items-center justify-center gap-2 text-purple-300 text-xs sm:text-sm"
         >
-          <Target className="w-4 h-4" />
+          <Target className="w-3 h-3 sm:w-4 sm:h-4" />
           {showBackups ? 'Hide' : 'Show'} Backup Strategy
         </button>
       )}
       
       {showBackups && route?.missStrategy && (
-        <div className="mb-4 p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
+        <div className="mb-3 sm:mb-4 p-2 sm:p-3 bg-purple-900/20 border border-purple-500/30 rounded-lg">
           <div className="text-xs text-purple-300 font-bold mb-1">MISS STRATEGY:</div>
           <div className="text-xs text-purple-200">{route.missStrategy}</div>
         </div>
       )}
       
-      <div className="flex justify-around pt-4 border-t border-slate-700">
+      <div className="flex justify-around pt-3 sm:pt-4 border-t border-slate-700">
         <div className="text-center">
-          <div className="text-2xl font-bold text-green-400">{gradeStats.A}</div>
+          <div className="text-xl sm:text-2xl font-bold text-green-400">{gradeStats.A}</div>
           <div className="text-xs text-slate-400">Optimal</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-yellow-400">{gradeStats.B}</div>
+          <div className="text-xl sm:text-2xl font-bold text-yellow-400">{gradeStats.B}</div>
           <div className="text-xs text-slate-400">Suboptimal</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-red-400">{gradeStats.C}</div>
+          <div className="text-xl sm:text-2xl font-bold text-red-400">{gradeStats.C}</div>
           <div className="text-xs text-slate-400">Wrong</div>
         </div>
       </div>
@@ -750,10 +750,10 @@ const DartSequence = () => {
     const hintDart = showHint && optimal ? optimal[index] : null;
 
     return (
-      <div className="flex-1 flex flex-col items-center gap-2">
+      <div className="flex-1 flex flex-col items-center gap-1 sm:gap-2">
         <div className="text-xs text-slate-400 font-medium">Dart {index + 1}</div>
         <div 
-          className={`w-20 h-20 rounded-xl flex items-center justify-center text-lg font-bold transition-all ${
+          className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl flex items-center justify-center text-base sm:text-lg font-bold transition-all ${
             dart 
               ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg' 
               : 'bg-slate-800 text-slate-600 border-2 border-dashed border-slate-700'
@@ -762,7 +762,7 @@ const DartSequence = () => {
           {dart || '?'}
         </div>
         {/* Fixed height container for hint to prevent layout shift */}
-        <div className="h-5 flex items-center justify-center">
+        <div className="h-4 sm:h-5 flex items-center justify-center">
           {hintDart && !dart && (
             <div className="text-xs text-amber-400 font-medium animate-pulse">
               💡 {hintDart}
@@ -774,7 +774,7 @@ const DartSequence = () => {
   };
 
   return (
-    <div className="bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-700">
+    <div className="bg-slate-900 rounded-2xl p-4 sm:p-6 shadow-xl border border-slate-700">
       <div className="flex justify-around">
         {renderDart(0)}
         {renderDart(1)}
@@ -861,21 +861,21 @@ const ActionButtons = () => {
   const { reset, generateNewPuzzle, feedback, getHint, showHint, removeDart, userSequence } = useGame();
 
   return (
-    <div className="space-y-3">
-      <div className="flex gap-3">
+    <div className="space-y-2 sm:space-y-3">
+      <div className="flex gap-2 sm:gap-3">
         <button
           onClick={getHint}
           disabled={showHint || feedback}
-          className="flex-1 py-4 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:opacity-40 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 active:scale-95"
+          className="flex-1 py-3 sm:py-4 bg-amber-600 hover:bg-amber-500 disabled:bg-slate-700 disabled:opacity-40 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base"
         >
-          <Lightbulb className="w-5 h-5" />
+          <Lightbulb className="w-4 h-4 sm:w-5 sm:h-5" />
           Hint
         </button>
         <button
           onClick={reset}
-          className="flex-1 py-4 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 active:scale-95"
+          className="flex-1 py-3 sm:py-4 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base"
         >
-          <RotateCcw className="w-5 h-5" />
+          <RotateCcw className="w-4 h-4 sm:w-5 sm:h-5" />
           Reset
         </button>
       </div>
@@ -883,7 +883,7 @@ const ActionButtons = () => {
       {!feedback && userSequence.length > 0 && (
         <button
           onClick={removeDart}
-          className="w-full py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-medium transition-all"
+          className="w-full py-2.5 sm:py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-medium transition-all text-sm sm:text-base"
         >
           ← Remove Last Dart
         </button>
@@ -892,7 +892,7 @@ const ActionButtons = () => {
       {feedback && (
         <button
           onClick={generateNewPuzzle}
-          className="w-full py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all active:scale-95"
+          className="w-full py-3 sm:py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-bold transition-all active:scale-95 text-sm sm:text-base"
         >
           Next Puzzle
         </button>
@@ -1032,14 +1032,14 @@ const GameContent = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4">
-      <div className="max-w-md mx-auto py-6 space-y-6">
-        <div className="text-center mb-4">
-          <h1 className="text-3xl font-bold text-white mb-2">🎯 Darts Checkout</h1>
-          <p className="text-slate-400 text-sm mb-3">Master your finishing game</p>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-2 sm:p-4 overflow-x-hidden">
+      <div className="max-w-md mx-auto py-2 sm:py-6 space-y-3 sm:space-y-6">
+        <div className="text-center mb-2 sm:mb-4">
+          <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">🎯 Darts Checkout</h1>
+          <p className="text-slate-400 text-xs sm:text-sm mb-2 sm:mb-3">Master your finishing game</p>
           <button
             onClick={() => switchPage('reference')}
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-bold transition-all active:scale-95"
+            className="px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-xs sm:text-sm font-bold transition-all active:scale-95"
           >
             📚 View Reference Guide
           </button>
